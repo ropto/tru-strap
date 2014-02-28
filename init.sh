@@ -83,8 +83,8 @@ if [[ "$FACTER_init_role" == "" || "$FACTER_init_env" == "" || "$FACTER_init_rep
   exit 1
 fi
 
-# Set Git login params - use RightScale input credentials if --repoprivkeyfile is not specified, Vagrant should specify this option.
-[ -z "$FACTER_init_repoprivkeyfile" ] && GITHUB_PRI_KEY=$ID_RSA || GITHUB_PRI_KEY=$(cat /vagrant/$FACTER_init_repoprivkeyfile)
+# Set Git login params
+GITHUB_PRI_KEY=$(cat $FACTER_init_repoprivkeyfile)
 puppet apply -v -e "file {'ssh': path => '/root/.ssh/',ensure => directory}"
 puppet apply -v -e "file {'id_rsa': path => '/root/.ssh/id_rsa',ensure => present, mode    => 0600, content => '$GITHUB_PRI_KEY'}"
 puppet apply -v -e "file {'config': path => '/root/.ssh/config',ensure => present, mode    => 0644, content => 'StrictHostKeyChecking=no'}"
