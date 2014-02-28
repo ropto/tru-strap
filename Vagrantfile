@@ -68,6 +68,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   end
 
   # Tru-Strap
-  config.vm.provision :shell, :path => "init.sh", :args => "--role #{$init_role} --environment #{$init_env} --repouser #{$init_repouser} --reponame #{$init_reponame} --repoprivkeyfile #{$init_repoprivkeyfile}"
+  config.vm.provision :shell, :path => "init.sh", :args => "--role #{$init_role} --environment #{$init_env} --repouser #{$init_repouser} --reponame #{$init_reponame} --repobranch #{$init_repobranch} --repoprivkeyfile #{$init_repoprivkeyfile}"
 
 end
