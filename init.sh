@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -x
+
 # Usage: init.sh --role webserver --environment prod1 --site a --repouser jimfdavies --reponame provtest-config
 
 VERSION=0.0.1
