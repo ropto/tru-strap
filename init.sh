@@ -23,9 +23,9 @@ function print_help {
 
 function set_facter {
   export FACTER_$1=$2
-  puppet apply -e "file { '/etc/facter': ensure => directory, mode => 0600 }" --logdest syslog
-  puppet apply -e "file { '/etc/facter/facts.d': ensure => directory, mode => 0600 }" --logdest syslog
-  puppet apply -e "file { '/etc/facter/facts.d/$1.txt': ensure => present, mode => 0600, content => '$1=$2' }" --logdest syslog
+  puppet apply -e "file { '/etc/facter': ensure => directory, mode => 0755 }" --logdest syslog
+  puppet apply -e "file { '/etc/facter/facts.d': ensure => directory, mode => 0755 }" --logdest syslog
+  puppet apply -e "file { '/etc/facter/facts.d/$1.txt': ensure => present, mode => 0755, content => '$1=$2' }" --logdest syslog
   echo "Facter says $1 is..."
   facter $1
 }
